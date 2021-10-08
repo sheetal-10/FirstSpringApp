@@ -23,9 +23,13 @@ public class HelloWorldController {
     public String test2(@PathVariable String name) {
         return "Hello : " + name;
     }
-
+    
     @RequestMapping(value = "/test3/{name}", method = RequestMethod.GET)
-    public String test3(@PathVariable String name, @RequestParam String fname, @RequestParam String lname){
-        return "Hello : " + name + " " + fname + " " + lname;
+    public String test3(
+            @RequestParam(name = "firstName") String anything
+    ){
+            return anything;
     }
+
+
 }
