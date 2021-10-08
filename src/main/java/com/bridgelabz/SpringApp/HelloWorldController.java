@@ -1,7 +1,9 @@
 package com.bridgelabz.SpringApp;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 public class HelloWorldController {
     @PostMapping("/greet")
@@ -27,15 +29,20 @@ public class HelloWorldController {
     @RequestMapping(value = "/test3/{name}", method = RequestMethod.GET)
     public String test3(
             @RequestParam(name = "firstName") String anything
-    ){
-            return anything;
+    ) {
+        return anything;
     }
 
     @RequestMapping(value = "/test4", method = RequestMethod.PUT)
-    public Student test4(@RequestBody Student student){
-        //System.out.println(student.toString());
+    public Student test4(@RequestBody Student student) {
+        System.out.println(student.toString());
         return student;
     }
 
+    @RequestMapping(value = "/test5", method = RequestMethod.PUT)
+    public Student test5(@RequestBody Student student) {
+        log.info(student.toString());
+        return student;
+    }
 
 }
