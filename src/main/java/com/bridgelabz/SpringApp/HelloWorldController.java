@@ -1,13 +1,21 @@
 package com.bridgelabz.SpringApp;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWorldController {
     @PostMapping("/greet")
     public String getMessage() {
         return "Hello from Bridgelabz";
+    }
+
+    @RequestMapping(value = {"/", "/hello", "message"})
+    public String getHelloMessage() {
+        return "Hello BridgeLabz";
+    }
+
+    @RequestMapping(value = "/test1", method = RequestMethod.GET)
+    public String test1(@RequestParam String fname, @RequestParam String lname) {
+        return "Hello : " + fname + " " + lname;
     }
 }
